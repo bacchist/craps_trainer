@@ -1,0 +1,36 @@
+:aces:
+  - [1, 1]
+:ace_deuce:
+  - [1, 2]
+:hard_four:
+  - [2, 2]
+:easy_four:
+  - [1, 3]
+:five:
+  - [1, 4]
+  - [2, 3]
+:hard_six:
+  - [3, 3]
+:easy_six:
+  - [1, 5]
+  - [2, 4]
+:seven:
+  - [1, 6]
+  - [2, 5]
+  - [3, 4]
+:hard_eight:
+  - [4, 4]
+:easy_eight:
+  - [2, 6]
+  - [3, 5]
+:nine:
+  - [3, 6]
+  - [4, 5]
+:hard_ten:
+  - [5, 5]
+:easy_ten:
+  - [4, 6]
+:yo:
+  - [5, 6]
+:twelve:
+  - [6, 6]

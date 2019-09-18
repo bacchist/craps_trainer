@@ -1,0 +1,109 @@
+High/Low:
+  - :aces
+  - :twelve
+C & E:
+  - :aces
+  - :ace_deuce
+  - :yo
+  - :twelve
+Seven/Eleven:
+  - :seven
+  - :yo
+Ace-Deuce/Twelve:
+  - :ace_deuce
+  - :twelve
+Aces/Yo:
+  - :aces
+  - :yo
+Low/Low:
+  - :aces
+  - :ace_deuce
+Hop any 5:
+  - :five
+Hop any 9:
+  - :nine
+Hop any 4:
+  - :easy_four
+  - :hard_four
+Hop any 10:
+  - :easy_ten
+  - :hard_ten
+Three-Way Craps:
+  - :aces
+  - :ace_deuce
+  - :twelve
+High/Low/Yo:
+  - :aces
+  - :yo
+  - :twelve
+Low/Low/Yo:
+  - :aces
+  - :ace_deuce
+  - :yo
+Hop any 6:
+  - :easy_six
+  - :hard_six
+Hop any 8:
+  - :easy_eight
+  - :hard_eight
+Horn:
+  - :aces
+  - :ace_deuce
+  - :yo
+  - :twelve
+Hopping Hardways:
+  - :hard_four
+  - :hard_six
+  - :hard_eight
+  - :hard_ten
+Hop any 5 & 9:
+  - :five
+  - :nine
+Hop any 4 & 10:
+  - :easy_four
+  - :hard_four
+  - :easy_ten
+  - :hard_ten
+Horn High Twelve:
+  - :aces
+  - :ace_deuce
+  - :yo
+  - :twelve
+Horn High Ace-Deuce:
+  - :aces
+  - :ace_deuce
+  - :yo
+  - :twelve
+Horn High Yo:
+  - :aces
+  - :ace_deuce
+  - :yo
+  - :twelve
+Horn High Aces:
+  - :aces
+  - :ace_deuce
+  - :yo
+  - :twelve
+Hopping Buffalo:
+  - :hard_four
+  - :hard_six
+  - :hard_eight
+  - :hard_ten
+  - :yo
+World Bet:
+  - :aces
+  - :ace_deuce
+  - :seven
+  - :yo
+  - :twelve
+Hop Any 6 & 8:
+  - :easy_six
+  - :hard_six
+  - :easy_eight
+  - :hard_eight
+Crap Check:
+  - :aces
+  - :ace_deuce
+  - :twelve
+Red:
+  - :seven

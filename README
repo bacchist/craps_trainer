@@ -1,0 +1,6 @@
+To do:
+
+Initialize bets with normalized wagers
+Rewrite code base using TDD practices
+Extract functionality to be placed in gems
+Create a web app

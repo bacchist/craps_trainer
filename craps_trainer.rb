@@ -60,7 +60,7 @@ def calculate_payout(winner, roll)
         if roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
           return winner.wager * 7
         end
-      when "Seven"
+      when "Red"
         if roll.name == :seven
           return winner.wager * 4
         end

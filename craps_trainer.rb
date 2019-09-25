@@ -120,7 +120,7 @@ while 1 do
   winning_roll = roll_a_winner(working_bets)
 
   print working_bets_string(working_bets)
-  puts winning_roll.result.to_s + " HITS!"
+  puts winning_roll.result.to_s + " hits"
   puts
 
   while 1 do

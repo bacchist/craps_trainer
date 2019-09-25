@@ -129,7 +129,7 @@ while 1 do
       puts Rainbow("Try again...").red
     else
       puts
-      return
+      break
     end
   end
 end

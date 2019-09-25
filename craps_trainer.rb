@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'rainbow'
+require 'byebug'
 require_relative 'lib/roll'
 require_relative 'lib/bet'
 
@@ -41,7 +42,7 @@ end
 def working_bets_string(wb)       # Returns a suitable string of working bets
   bets = ""
   wb.each { |bet|
-    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + bet.type + "\n"
+    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + " " + bet.type + "\n"
   }
   bets
 end
@@ -115,7 +116,7 @@ max_unique_bets = gets.to_i
 while 1 do
   working_bets = []
   b_list = pick_bets(rand(1..max_unique_bets))
-  working_bets = place_bets(b_list, rand(1..max_bet_size))
+  working_bets = place_bets(b_list, max_bet_size)
   winning_roll = roll_a_winner(working_bets)
 
   print working_bets_string(working_bets)

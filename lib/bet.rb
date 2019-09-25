@@ -41,6 +41,7 @@ class Bet
   private
 
     def normalize_bet_size(wager)
+      # byebug
       if wager < self.ways
         @wager = self.ways
       elsif wager % self.ways != 0 && wager % 5 != 0

@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
+require 'rainbow'
 require_relative 'lib/roll'
 require_relative 'lib/bet'
 
@@ -30,7 +31,7 @@ def roll_a_winner(wb)             # Roll some dice. Keep rerolling until a
     wb.each { |bet|
 	  if bet.winners.include?(dice.name)
 	    valid = true
-		return dice
+      return dice
 	  end
 	}
 	dice.reroll
@@ -40,7 +41,7 @@ end
 def working_bets_string(wb)       # Returns a suitable string of working bets
   bets = ""
   wb.each { |bet|
-    bets << "$" + bet.wager.to_s + " on " + bet.type + " * "
+    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + " on " + bet.type + " * "
   }
   bets
 end
@@ -77,6 +78,9 @@ def calculate_payout(winner, roll)
           return round(30 * (2 * winner.wager.to_f / winner.ways) - winner.wager)
         end
     end
+  end
+  if winner.type == "World Bet" && roll.name == :seven
+    return wager
   end
   h = roll.is_hard? ? 30 : 15
   w = winner.wager.to_f / winner.ways

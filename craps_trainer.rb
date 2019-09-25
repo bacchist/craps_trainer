@@ -2,7 +2,7 @@
 
 require 'yaml'
 require 'rainbow'
-require 'byebug'
+# require 'byebug'
 require_relative 'lib/roll'
 require_relative 'lib/bet'
 

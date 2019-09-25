@@ -41,7 +41,7 @@ end
 def working_bets_string(wb)       # Returns a suitable string of working bets
   bets = ""
   wb.each { |bet|
-    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + " on " + bet.type + "\n"
+    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + bet.type + "\n"
   }
   bets
 end
@@ -118,7 +118,7 @@ while 1 do
   working_bets = place_bets(b_list, rand(1..max_bet_size))
   winning_roll = roll_a_winner(working_bets)
 
-  print "Working bets:\n" + working_bets_string(working_bets)
+  print working_bets_string(working_bets)
   puts winning_roll.result.to_s + " HITS!"
   puts
 

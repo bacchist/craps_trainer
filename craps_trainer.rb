@@ -41,7 +41,7 @@ end
 def working_bets_string(wb)       # Returns a suitable string of working bets
   bets = ""
   wb.each { |bet|
-    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + " on " + bet.type + " * "
+    bets << Rainbow("$").green + Rainbow(bet.wager.to_s).green + " on " + bet.type + "\n"
   }
   bets
 end
@@ -61,7 +61,7 @@ def calculate_payout(winner, roll)
         if winner.type == "C & E" && roll.name == :yo
           return winner.wager * 6.5
         elsif winner.type == "C & E"
-          return winner.wager * 3
+          return winner.wager * 1.5
         else roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
           return winner.wager * 7
         end
@@ -118,7 +118,7 @@ while 1 do
   working_bets = place_bets(b_list, rand(1..max_bet_size))
   winning_roll = roll_a_winner(working_bets)
 
-  print "Working bets: * " + working_bets_string(working_bets) + "\n"
+  print "Working bets:\n" + working_bets_string(working_bets)
   puts winning_roll.result.to_s + " HITS!"
   puts
 

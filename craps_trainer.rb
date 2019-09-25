@@ -58,13 +58,19 @@ def calculate_payout(winner, roll)
   if winner.exceptional?
     case winner.exception
       when "Crap Check"
-        if winner.type == "C & E"
+        if winner.type == "C & E" && roll.name == :yo
+          return winner.wager * 6.5
+        elsif winner.type == "C & E"
           return winner.wager * 3
-        elsif roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
+        else roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
           return winner.wager * 7
         end
       when "Red"
-        if roll.name == :seven
+        if winner.type == "Seven/Eleven" && roll.name == :seven
+          return winner.wager * 1.5
+        elsif winner.type == "Seven/Eleven"
+          return winner.wager * 6.5
+        else
           return winner.wager * 4
         end
       when "Horn High"
@@ -115,9 +121,15 @@ while 1 do
   print "Working bets: * " + working_bets_string(working_bets) + "\n"
   puts winning_roll.result.to_s + " HITS!"
   puts
-  print "What is the payout? "
-  guess = gets.to_i
 
-  puts "You guessed $#{guess} and the correct payout is: $" + wins_and_losses(working_bets, winning_roll).to_s
-  puts
+  while 1 do
+    print "What is the payout? "
+    guess = gets.to_i
+    if guess != wins_and_losses(working_bets, winning_roll)
+      puts Rainbow("Try again...").red
+    else
+      puts
+      return
+    end
+  end
 end

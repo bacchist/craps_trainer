@@ -63,8 +63,8 @@ def calculate_payout(winner, roll)
           return winner.wager * 6.5
         elsif winner.type == "C & E"
           return winner.wager * 1.5
-        else roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
-          return winner.wager * 7
+        elsif roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
+          return winner.wager * 4
         end
       when "Red"
         if winner.type == "Seven/Eleven" && roll.name == :seven

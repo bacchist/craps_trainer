@@ -3,11 +3,7 @@ class Bet
 
   def initialize(type, wager)
     @type = type
-    if wager < self.ways
-      @wager = self.ways
-    else
-	    @wager = wager
-    end
+    normalize_bet_size(wager)
   end
 
   def winners
@@ -41,4 +37,17 @@ class Bet
   def exception
     ALT_PAYOUTS.each { |k, v| return k if v.include?(@type) }
   end
+
+  private
+
+    def normalize_bet_size(wager)
+      if wager < self.ways
+        @wager = self.ways
+      elsif wager % self.ways != 0 && wager % 5 != 0
+        wager -= 1 until (wager % self.ways == 0 || wager % 5 == 0)
+        @wager = wager
+      else
+        @wager = wager
+      end
+    end
 end

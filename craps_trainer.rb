@@ -57,7 +57,9 @@ def calculate_payout(winner, roll)
   if winner.exceptional?
     case winner.exception
       when "Crap Check"
-        if roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
+        if winner.type == "C & E"
+          return winner.wager * 3
+        elsif roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
           return winner.wager * 7
         end
       when "Red"

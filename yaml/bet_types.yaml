@@ -28,6 +28,10 @@ Hop any 4:
 Hop any 10:
   - :easy_ten
   - :hard_ten
+Three-Way Craps:
+  - :aces
+  - :ace_deuce
+  - :twelve
 High/Low/Yo:
   - :aces
   - :yo

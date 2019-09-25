@@ -86,7 +86,7 @@ def calculate_payout(winner, roll)
     end
   end
   if winner.type == "World Bet" && roll.name == :seven
-    return winner.wager
+    return 0
   end
   h = roll.is_hard? ? 30 : 15
   w = winner.wager.to_f / winner.ways

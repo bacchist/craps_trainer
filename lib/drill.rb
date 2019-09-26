@@ -57,13 +57,14 @@ def drill(max_bets, max_size, time_limit = false)
     working = prepare_drill(max_bets, max_size)
     winning_roll = roll_a_winner(working)
     give_problem(working, winning_roll)
-    # if time_limit
-    #   timer = Timer.new(time_limit) {
-    #     puts "\r\nYou took too long\r\n"
-    #     drill(max_bets, max_size, time_limit)
-    #   }
-    #   timer.start
-    # end
+    if time_limit
+      timer = Timer.new(time_limit) {
+        $stdout.cooked!
+        puts "\r\n\r\nYou took too long\r\n\rn"
+        drill(max_bets, max_size, time_limit)
+      }
+      timer.start
+    end
     get_answer(working, winning_roll)
   end
 end

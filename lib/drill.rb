@@ -60,7 +60,7 @@ def drill(max_bets, max_size, time_limit = false)
     if time_limit
       timer = Timer.new(time_limit) {
         $stdout.cooked!
-        puts "\r\n\r\nYou took too long\r\n\rn"
+        puts "\r\n\r\nYou took too long\r\n\r\n"
         drill(max_bets, max_size, time_limit)
       }
       timer.start

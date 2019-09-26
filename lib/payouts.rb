@@ -6,7 +6,7 @@ def round(chips)                  # Rounds like a casino.
   end
 end
 
-def
+def calculate_payout(winner, roll)
   if winner.exceptional?
     case winner.exception
       when "Crap Check"

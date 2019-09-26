@@ -30,7 +30,6 @@ def get_answer(working, winning_roll)
 
   loop do
     guess = prompt.ask('What is the payout?') do |q|
-      q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
       q.convert :int
     end
     if guess != wins_and_losses(working, winning_roll)

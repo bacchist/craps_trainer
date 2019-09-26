@@ -14,15 +14,25 @@ def prepare_drill(max_bets, max_size)
 end
 
 def give_problem(working, winning_roll)
-  print working_bets_string(working)
+  puts working_bets_string(working)
   puts winning_roll.result.to_s + " hits"
   puts
 end
 
 def get_answer(working, winning_roll)
+  prompt = TTY::Prompt.new
+
+  prompt.on(:keypress) do |event|
+    if event.value == "Q"
+      display_results
+    end
+  end
+
   loop do
-    print "What is the payout? "
-    guess = gets.to_i
+    guess = prompt.ask('What is the payout?') do |q|
+      q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
+      q.convert :int
+    end
     if guess != wins_and_losses(working, winning_roll)
       puts Rainbow("Try again...").red
     else
@@ -32,9 +42,29 @@ def get_answer(working, winning_roll)
   end
 end
 
-def drill(max_bets, max_size)
-  working = prepare_drill(max_bets, max_size)
-  winning_roll = roll_a_winner(working)
-  give_problem(working, winning_roll)
-  get_answer(working, winning_roll)
+def display_results
+  abort "Goodbye"
+end
+
+def drill(max_bets, max_size, time_limit = false)
+  prompt = TTY::Prompt.new
+  prompt.on(:keypress) do |event|
+    if event.value == "Q"
+      display_results
+    end
+  end
+
+  loop do
+    working = prepare_drill(max_bets, max_size)
+    winning_roll = roll_a_winner(working)
+    give_problem(working, winning_roll)
+    # if time_limit
+    #   timer = Timer.new(time_limit) {
+    #     puts "\r\nYou took too long\r\n"
+    #     drill(max_bets, max_size, time_limit)
+    #   }
+    #   timer.start
+    # end
+    get_answer(working, winning_roll)
+  end
 end

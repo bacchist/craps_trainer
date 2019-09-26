@@ -46,7 +46,7 @@ def calculate_payout(winner, roll)
 end
 
 
-def wins_and_losses(working, roll)          # Subtracts losing wagers from payouts
+def wins_and_losses(working, roll)
   winnings = 0
   working.each { |wb|
     if wb.winners.include?(roll.name)

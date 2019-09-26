@@ -52,7 +52,16 @@ def practice_drill
   #   end
   # end
 
-  drill(max_bets, max_size)
+  time_limit = prompt.yes?('Do you want a time limit?')
+
+  if time_limit
+    time_limit = prompt.ask('How long to solve?') do |q|
+      q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
+      q.convert :int
+    end
+  end
+
+  drill(max_bets, max_size, time_limit)
 end
 
 # timer = Timer.new(drill_time) { throw :challenge_results }

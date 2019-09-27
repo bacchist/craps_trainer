@@ -19,12 +19,12 @@ def give_problem(working, winning_roll)
   puts
 end
 
-def get_answer(working, winning_roll)
+def get_answer(working, winning_roll, results)
   prompt = TTY::Prompt.new
 
   prompt.on(:keypress) do |event|
     if event.value == "Q"
-      display_results
+      display_results(results)
     end
   end
 
@@ -34,37 +34,38 @@ def get_answer(working, winning_roll)
     end
     if guess != wins_and_losses(working, winning_roll)
       puts Rainbow("Try again...").red
+      results[:asked] += 1
     else
+      results[:correct] += 1
       puts
       break
     end
   end
 end
 
-def display_results
-  abort "Goodbye"
+def display_results(results)
+  $stdout.cooked!
+  good = results[:correct]
+  total = results[:asked]
+  score = good.to_f / total
+  puts "You answered #{good} correct out of #{total}."
+  puts "That's #{score*100}%"
+  abort "Thanks for playing!"
 end
 
-def drill(max_bets, max_size, time_limit = false)
-  prompt = TTY::Prompt.new
-  prompt.on(:keypress) do |event|
-    if event.value == "Q"
-      display_results
-    end
+def drill(max_bets, max_size, drill_time = false)
+  results = { asked: 0, correct: 0 }
+
+  if drill_time
+    timer = Timer.new(drill_time) { display_results(results) }
+    timer.start
   end
 
   loop do
     working = prepare_drill(max_bets, max_size)
     winning_roll = roll_a_winner(working)
     give_problem(working, winning_roll)
-    if time_limit
-      t = Timer.new(time_limit) {
-        $stdout.cooked!
-        puts "\r\n\r\nDice out!\r\n\r\n"
-        drill(max_bets, max_size, time_limit)
-      }
-      t.start
-    end
-    get_answer(working, winning_roll)
+    results[:asked] += 1
+    get_answer(working, winning_roll, results)
   end
 end

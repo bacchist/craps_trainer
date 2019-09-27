@@ -58,12 +58,12 @@ def drill(max_bets, max_size, time_limit = false)
     winning_roll = roll_a_winner(working)
     give_problem(working, winning_roll)
     if time_limit
-      timer = Timer.new(time_limit) {
+      t = Timer.new(time_limit) {
         $stdout.cooked!
         puts "\r\n\r\nDice out!\r\n\r\n"
         drill(max_bets, max_size, time_limit)
       }
-      timer.start
+      t.start
     end
     get_answer(working, winning_roll)
   end

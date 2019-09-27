@@ -11,7 +11,7 @@ def calculate_payout(winner, roll)
     case winner.exception
       when "Crap Check"
         if winner.type == "C & E" && roll.name == :yo
-          return winner.wager * 6.5
+          return round(winner.wager * 6.5)
         elsif winner.type == "C & E"
           return winner.wager * 3
         elsif roll.name == :aces || roll.name == :ace_deuce || roll.name == :twelve
@@ -19,9 +19,9 @@ def calculate_payout(winner, roll)
         end
       when "Red"
         if winner.type == "Seven/Eleven" && roll.name == :seven
-          return winner.wager * 1.5
+          return round(winner.wager * 1.5)
         elsif winner.type == "Seven/Eleven"
-          return winner.wager * 6.5
+          return round(winner.wager * 6.5)
         else
           return winner.wager * 4
         end

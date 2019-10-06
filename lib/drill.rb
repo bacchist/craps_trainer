@@ -44,19 +44,27 @@ def get_answer(working, winning_roll, results)
 end
 
 def display_results(results)
+  $timer.defuse if $timer
   $stdout.cooked!
   good = results[:correct]
   total = results[:asked]
+  time = results[:drill_time]
+  maxb = results[:bets]
+  maxs = results[:size]
   score = good.to_f / total
   puts "You answered #{good} correct out of #{total}."
   puts "That's #{score*100}%"
+  File.open("results.txt", "a") do |f|
+    f.puts "(#{Time.now.strftime('%m/%d/%Y %I:%M %p')}) [size: #{maxs} bets: #{maxb} time: #{time}s]  #{good} of #{total} <%#{(score*100).round(2)}>"
+  end
   abort "Thanks for playing!"
 end
 
 def drill(max_bets, max_size, drill_time = false)
-  results = { asked: 0, correct: 0 }
+  results = { asked: 0, correct: 0, bets: max_bets, size: max_size }
 
   if drill_time
+    results[:drill_time] = drill_time
     timer = Timer.new(drill_time) { display_results(results) }
     timer.start
   end

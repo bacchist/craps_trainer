@@ -2,4 +2,13 @@
 
 require_relative 'lib/setup'
 
-get_user_inputs
+user = Interface.new
+max_bets = user.max_bets
+max_size = user.max_size
+drill = Drill.new(max_bets, max_size)
+
+loop do
+  drill.new_problem
+  drill.display
+  until drill.evaluate(user.answer) do puts Rainbow('Try again...').red end
+end

@@ -1,23 +1,38 @@
-def get_user_inputs
-  prompt = TTY::Prompt.new
-  max_size = prompt.ask('Maximum bet size?') do |q|
-    q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
-    q.convert :int
+# frozen_string_literal: true
+
+class Interface
+  def initialize
+    @p = TTY::Prompt.new
   end
 
-  max_bets = prompt.ask('Maximum number of bets?') do |q|
-    q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
-    q.convert :int
-  end
-
-  timed = prompt.yes?('Would you like a timed challenge?')
-
-  if timed
-    drill_time = prompt.ask('How long do you want to drill? (in seconds)') do |q|
+  def max_bets
+    @p.ask('Maximum number of bets?') do |q|
       q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
       q.convert :int
     end
   end
 
-  drill(max_bets, max_size, drill_time)
+  def max_size
+    @p.ask('Maximum bet size?') do |q|
+      q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
+      q.convert :int
+    end
+  end
+
+  def time
+    timed = @p.yes?('Would you like a timed challenge?')
+
+    if timed
+      @drill_time = @p.ask('How long do you want to drill? (in seconds)') do |q|
+        q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
+        q.convert :int
+      end
+    end
+  end
+
+  def answer
+    @p.ask('What is the payout?') do |q|
+      q.convert :int
+    end
+  end
 end

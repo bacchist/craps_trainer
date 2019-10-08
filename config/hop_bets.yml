@@ -1,0 +1,89 @@
+---
+High/Low:
+  :aces: 14
+  :twelve: 14
+C & E:
+  :aces: 3
+  :ace_deuce: 3
+  :twelve: 3
+  :yo: 6.5
+Seven/Eleven:
+  :seven: 1.5
+  :yo: 6.5
+Ace-Deuce/Twelve:
+  :ace_deuce: 6.5
+  :twelve: 14
+Aces/Yo:
+  :aces: 14
+  :yo: 6.5
+Low/Low:
+  :aces: 14
+  :ace_deuce: 6.5
+Hop any 5:
+  :five: 6.5
+Hop any 9:
+  :nine: 6.5
+Hop any 4:
+  :easy_four: 6.5
+  :hard_four: 14
+Hop any 10:
+  :easy_ten: 6.5
+  :hard_ten: 14
+Three-Way Craps:
+  :aces: 7
+  :ace_deuce: 7
+  :twelve: 7
+High/Low/Yo:
+  :aces: 9
+  :twelve: 9
+  :yo: 4
+Low/Low/Yo:
+  :aces: 9
+  :ace_deuce: 4
+  :yo: 4
+Hop any 6:
+  :easy_six: 4
+  :hard_six: 9
+Hop any 8:
+  :easy_eight: 4
+  :hard_eight: 9
+Horn:
+  :twelve: 6.5
+  :aces: 6.5
+  :ace_deuce: 2.75
+  :yo: 2.75
+Hopping Hardways:
+  :hard_four: 6.5
+  :hard_six: 6.5
+  :hard_eight: 6.5
+  :hard_ten: 6.5
+Hop any 5 & 9:
+  :five: 2.75
+  :nine: 2.75
+Hop any 4 & 10:
+  :easy_four: 2.75
+  :easy_ten: 2.75
+  :hard_four: 6.5
+  :hard_ten: 6.5
+Hopping Buffalo:
+  :hard_four: 5
+  :hard_six: 5
+  :hard_eight: 5
+  :hard_ten: 5
+  :yo: 2
+World Bet:
+  :yo: 2
+  :twelve: 5
+  :ace_deuce: 2
+  :seven: 0
+Hop Any 6 & 8:
+  :hard_six: 4
+  :hard_eight: 4
+  :easy_six: 1.5
+  :easy_eight: 1.5
+Crap Check:
+  :aces: 7
+  :ace_deuce: 7
+  :twelve: 7
+Red:
+  :seven: 4

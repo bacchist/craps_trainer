@@ -1,15 +1,19 @@
-# Decided a class would be better
+# frozen_string_literal: true
+
+# Assembles a list of Bets, provides a list of winning outcomes,
+# tallies up the payouts.
 class BetList
   attr_reader :bets
 
-  def initialize(num, max_size)
+  def initialize(options)
     @bets = []
-    @max_size = max_size
-    pick_bets(num)
+    @max_size = options[:max_size]
+    @irregular = options[:irregular]
+    pick_bets(options[:num])
   end
 
   def add_bet(name)
-    @bets << Bet.new(name, @max_size)
+    @bets << Bet.new(name, @max_size, @irregular)
   end
 
   def display

@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require_relative 'lib/setup'
 
 user = Interface.new
-max_bets = user.max_bets
-max_size = user.max_size
-drill = Drill.new(max_bets, max_size)
+if user.defaults?
+  options = {}
+else
+  options = { max_bets: user.max_bets,
+                              max_size: user.max_size,
+                              irregular: user.irregular }
+end
+drill = Drill.new(options)
 
 loop do
   drill.new_problem

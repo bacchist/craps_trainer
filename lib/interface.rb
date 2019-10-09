@@ -5,6 +5,10 @@ class Interface
     @p = TTY::Prompt.new
   end
 
+  def defaults?
+    @p.yes?('Use default options?')
+  end
+
   def max_bets
     @p.ask('Maximum number of bets?') do |q|
       q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
@@ -17,6 +21,10 @@ class Interface
       q.validate(/^([1-9]+)\d*$/, 'Must be a positive integer.')
       q.convert :int
     end
+  end
+
+  def irregular
+    @p.no?('Do you want to include irregular bets?')
   end
 
   def time

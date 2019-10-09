@@ -1,15 +1,19 @@
+# frozen_string_literal: true
+
+# Requests a list of bets according to user options, rolls the dice to
+# find a winner, checks the user's response against the expected answer.
 class Drill
   attr_reader :bet_list
 
-  def initialize(max_bets, max_size)
-    @results = { asked: 0, correct: 0, bets: max_bets, size: max_size }
-    @max_bets = max_bets
-    @max_size = max_size
+  def initialize(options)
+    @options = defaults.merge(options)
     @dice = Roll.new
   end
 
   def new_problem
-    @bet_list = BetList.new(@max_bets, @max_size)
+    #binding.pry
+    @options[:num] = rand(1..@options[:max_bets])
+    @bet_list = BetList.new(@options)
   end
 
   def display
@@ -24,5 +28,11 @@ class Drill
 
   def correct
     @bet_list.payouts(@dice.name)
+  end
+
+  private
+
+  def defaults
+    { max_bets: 2, max_size: 10, irregular: false }
   end
 end

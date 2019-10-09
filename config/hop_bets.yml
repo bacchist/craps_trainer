@@ -72,6 +72,7 @@ Hopping Buffalo:
   :hard_ten: 5
   :yo: 2
 World Bet:
+  :aces: 5
   :yo: 2
   :twelve: 5
   :ace_deuce: 2
@@ -87,3 +88,8 @@ Crap Check:
   :twelve: 7
 Red:
   :seven: 4
+Horn High:
+  :twelve: 6.5
+  :aces: 6.5
+  :ace_deuce: 2.75
+  :yo: 2.75

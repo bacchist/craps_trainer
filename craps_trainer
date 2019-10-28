@@ -4,17 +4,17 @@
 require_relative 'lib/setup'
 
 user = Interface.new
-if user.defaults?
-  options = {}
-else
-  options = { max_bets: user.max_bets,
-                              max_size: user.max_size,
-                              irregular: user.irregular }
-end
+options = if user.defaults?
+            {}
+          else
+            { max_bets: user.max_bets,
+              max_size: user.max_size,
+              irregular: !user.irregular }
+          end
 drill = Drill.new(options)
 
 loop do
   drill.new_problem
   drill.display
-  until drill.evaluate(user.answer) do puts Rainbow('Try again...').red end
+  until drill.evaluate(user.answer) do user.red('Try again...') end
 end

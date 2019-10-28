@@ -17,7 +17,7 @@ class BetList
   end
 
   def display
-    @bets.each { |bet| print "| $#{bet.wager} #{bet.name} |" }
+    @bets.each { |bet| puts "$#{bet.wager} #{bet.name}" }
   end
 
   # Select the desired number of bets without duplication

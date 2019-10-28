@@ -11,7 +11,6 @@ class Drill
   end
 
   def new_problem
-    #binding.pry
     @options[:num] = rand(1..@options[:max_bets])
     @bet_list = BetList.new(@options)
   end
